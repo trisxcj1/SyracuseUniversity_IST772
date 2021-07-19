@@ -1,0 +1,91 @@
+# Question 2
+```{r}
+summary(ChickWeight)
+
+dim(ChickWeight)
+# The first number is 578 and this represents the number of rows
+# That is, there are 578 observations in total recorded for the chicks
+
+```
+
+# Question 3
+```{r}
+summary(ChickWeight$weight)
+   # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   # 35.0    63.0   103.0   121.8   163.8   373.0
+# This command runs a summary on the weight vector (or variable) from the ChickWeight data set
+# The weight had a range of 338 (373 - 35), mean of 121.8, median of 103.0, 1st quartile of 63, 3rd quartile of 163.8, and IQR of 100.8.
+
+head(ChickWeight$weight)
+# 42 51 59 64 76 93
+# This command extracts the first 6 elements of the weight vector (or variable) from the ChickWeight data set
+
+mean(ChickWeight$weight)
+# 121.8183
+# This command calculates the arithmetic mean (average) of the values within the weight vector (or variable) from the ChickWeight data set
+
+myChkWts <- ChickWeight$weight
+# This command assigns the weight vector from the ChickWeights data set to a variable named myChkWts
+
+quantile(myChkWts, 0.5)
+# 50% 
+# 103 
+# This command extracts the 50th percentile from the variable containing the weights vector
+# The 50th percentile is also the median, and the median value is 103
+   
+```
+
+# Question 4
+```{r}
+hist(myChkWts)
+abline(v=quantile(myChkWts, c(0.025, 0.975)), col=2, lwd=3)
+
+quantile(myChkWts, c(0.025, 0.975))
+ #   2.5%   97.5% 
+ # 41.000 294.575
+# These values signify that 95% of the weights lie between 41 and 294.575
+
+summary(myChkWts)
+# The mean of the weights is 121.8 and the meadian is 103
+# As can be seen, the mean is greater than the mean
+# This, along with the histogram, indicates that the data has a right skew
+# That is, there are more recordings of lower weights and a few recordings of heavier weights
+
+```
+
+# Question 5
+```{r}
+set.seed(1234)
+sampling_distribution <- replicate(10000, mean(sample(myChkWts, size=11, replace=T)))
+
+quantile(sampling_distribution, c(0.025, 0.975))
+
+hist(sampling_distribution)
+abline(v=quantile(sampling_distribution, c(0.025, 0.975)), col=2, lwd=3)
+  
+```
+
+# Question 6
+```{r}
+# The distribution of the original data provides a mean which is calculated from the given data set. This mean, however, might not be the true mean from the original/actual set of data -- it is merely a point estimate. 
+# The distribution of the sampling mean, on the other hand, represents the mean (and distribution) of various samples from the data. Based on the law of large numbers and the central limit theorem, as these samples get larger and the number of observations increase, the mean of the distribution is expected to be closer to the true mean and the distribution is expected to be approximately normal.
+
+# The quantile values are different because these are essentially two different data sets
+# The first data set represents the recorded observations. Thus, the those quantiles will represent where 95% of the recorded data lies.
+# The second data set represents the means of data which was sampled from the recorded data. Thus, the quantiles will represents where 95% of the means lie.
+
+```
+
+# Question 7
+```{r}
+set.seed(1234)
+sampling_distribution_2 <- replicate(10000, mean(sample(myChkWts, size=100, replace=T)))
+
+quantile(sampling_distribution_2, c(0.025, 0.975))
+
+hist(sampling_distribution_2)
+abline(v=quantile(sampling_distribution_2, c(0.025, 0.975)), col=3, lwd=3)
+
+# Here, the quantiles are once again different because we are taking more observatrions within the sample.
+# As the number of observations increase, the estimate tends towards the true mean of the distribution.
+```
