@@ -1,0 +1,53 @@
+# Question 1
+```{r}
+# Mean: this is the average of a set of numeric values. The (arithmetic) mean is calculated by summing the set of numbers, and then dividing by the number of nuumbers within the set.
+
+# Meadian: this is the central/middle value within an ordered set of numeric values. 
+
+# Mode: this is the most frequently occurring number within a set of numeric values.
+
+# Variance: this is a measure of variability within a set of numeric values, and it is calculated by taking the average of the squared deviations from the mean.
+
+# Standard deviation: this is a measure of dispersion from the mean within a set of numeric values, and it is calculated by taking the square root of the variance.
+
+# Histogram: this is a bar graph which represents data segregated into buckets/ranges; histograms give approximate representations of the distribution of a set of numeric values.
+
+# Normal distribution: this is a probability distribution which is asymmetric about the mean; that is, the mean lies at the center of the distribution/histogram, and there's an equal distribution of values on either side of the mean.
+
+# Poisson distribution: this is a probability distribution which shows how many times an event might occur/is likely to occur within a specific period (of time).
+
+```
+
+# Question 3
+## Running `data()`
+```{r}
+data()
+```
+
+## Using the `BOD` data set
+### Running `summary(BOD)`
+```{r}
+?BOD
+summary(BOD)
+```
+
+### Description of the mean and median
+```{r}
+# For `Time`, the mean represents the average time (in days) within the data set, and the median represents the middle time (in days) within the data set. Here, the mean is 3.667 days and the median is 3.5 days.
+
+# For `demand`, the mean represents the average biochemical oxygen demand within the data set, and the median represents the middle biochemical biochemical oxygen demand within the data set. Here, the mean is 14.83mg/l and the median is 15.80mg/l.
+```
+
+# Question 4
+## Using the `LakeHuron` data set
+### Running `hist(LakeHuron)`
+```{r}
+?LakeHuron
+summary(LakeHuron)
+hist(LakeHuron)
+```
+
+### Description of the distribution
+```{r}
+# This distribution of the values within the LakeHuron data set seems approximately normal. The highest point of the data set lies around the mean of the data set (which is also approximately the median). However, the distribution also seems to have a slight left-skew.
+```
