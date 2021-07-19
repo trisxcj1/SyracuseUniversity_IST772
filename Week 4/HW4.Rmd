@@ -1,0 +1,48 @@
+# Question 7
+```{r}
+library(ggplot2)
+data("PlantGrowth")
+summary(PlantGrowth)
+# The summary command outputs summary statistics for the PlantGrowth data set, and this is regardless of group. 
+# The summary statistics for the weight of plants indicate that the average weight was 5.073 and the median weight was 5.155. The summary statistics also indicate that the weight ranged from 3.590 to 6.310, with a first quartile of 4.550 and a third quartile of 5.530.
+
+ggplot(data=PlantGrowth) +
+  geom_histogram(aes(weight)) +
+  facet_wrap(~group)
+
+# The ctrl group and trt1 group have a similar spread; but the trt1 group useems to have a uniform distribution while the ctrl group does not.
+# The ctrl group and trt2 groups have similar shaped distributions; but the ctrl group has a greater spread and a higher peak, while the trt2 group has a smaller spread and higher average.
+
+
+```
+
+# Question 8
+```{r}
+boxplot(weight ~ group, data=PlantGrowth)
+
+# The boxplots indicate that trt2 group has a smallest spread and highest mean, whereas the trt1 group has the largest spread and lowest mean, along with an outlier at the higher end of the distribution. The ctrl group sits at the middle of the of the trt1 group and the trt2 group. 
+```
+
+# Question 9
+```{r}
+t.test(PlantGrowth$weight[PlantGrowth$group=="ctrl"], PlantGrowth$weight[PlantGrowth$group=="trt1"])
+
+# Recall that the null hypothesis for this test is that the difference of the sample means is 0, and the alternative is that the difference of the sample means is not 0.
+
+# 95 percent confidence interval:
+#  -0.2875162  1.0295162
+
+# Realize that the confidence interval contains 0. Therefore, at the 5% level of significance, there is not enough statistical evidence to suggest that the mean weight for the plants within the ctrl group and the mean weight for plants in the trt1 group are different. That is, there is insufficient evidence to suggest that the mean weights are different from 0, and we fail to reject the null hypothesis.
+
+```
+
+# Question 10
+```{r} 
+# Recall that the null hypothesis for this test is that the difference of the sample means is 0, and the alternative is that the difference of the sample means is not 0.
+
+# 95 percent confidence interval:
+#  -0.98287213 -0.00512787
+
+# Realize that the confidence interval does not contain 0. Therefore, at the 5% level of significance, there is enough statistical evidence to suggest that the mean weight for the plants within the ctrl group and the mean weight for plants in the trt2 group are different. That is, there is sufficient evidence to suggest that the mean weights are different from 0, and we reject the null hypothesis.
+
+```
