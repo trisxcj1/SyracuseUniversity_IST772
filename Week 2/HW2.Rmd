@@ -1,0 +1,84 @@
+# Question 1
+```{r}
+# From 9 flips: 4 heads, 5 tails
+
+set.seed(1234)
+table(rbinom(n=100000, size=9, prob=0.5))
+# Output:
+  #   0     1     2     3     4     5     6     7     8     9 
+  # 188  1740  7056 16409 24532 24737 16310  7085  1752   191  
+
+# From 100,000 repetitions of flipping a fair coin 9 times (where achieving Heads represents success), 5 Heads was most frequent and 0 Heads was least frequent. 
+
+```
+
+# Question 2
+```{r}
+set.seed(1234)
+coin_flip_probs <- table(rbinom(n=100000, size=9, prob=0.5))/100000
+# Output:
+#       0       1       2       3       4       5       6       7       8 
+# 0.00188 0.01740 0.07056 0.16409 0.24532 0.24737 0.16310 0.07085 0.01752 
+#       9 
+# 0.00191 
+# From 100,000 repetitions of flipping a fair coin 9 times (where achieving Heads represents success), achieving 5 Heads was most likely and 0 Heads was least likely. 
+
+barplot(coin_flip_probs)
+
+# The bar plot for these coin flips looks approximately normal, there the center lies around 4-5 Heads.
+# The distribution is now approximately normal due to the large number of trails applied to this binomial distribution (ie, the central limit theorem). 
+```
+
+# Question 6
+```{r}
+# Completed table:
+ 
+               # Passed         Failed       Total
+# High school     33                 17        50
+# College         47                 3         50
+
+# Total          80                20          100
+
+# The one additional piece of information was all that was necessary because the values within the cells must add of to their respective row/column totals. Therefore, having all the row/column totals, as well as the information for 1 cell, was enough information to calculate the missing values.
+
+# Completed table of probabilities:
+ 
+               # Passed         Failed       Total
+# High school     0.33          0.17        0.50
+# College         0.47          0.03         0.50
+
+# Total          0.80           0.20          1.00
+
+# For high-school students, the rate of passing is 33%.
+
+
+```
+
+# Question 7
+```{r}
+# Completed table:
+ 
+                        # Passed         Failed       Total
+# Defaulting               2               69          71
+# Not defaulting         93933             5996         99929
+
+# Total                  93935            6065        100000
+
+# ~93.935% of customers both pass the test and do not have their homes repossessed.
+
+```
+
+# Question 8
+```{r}
+# Completed table of probabilities:
+ 
+                        # Passed         Failed       Total
+# Defaulting            0.200000        0.69000        0.71000
+# Not defaulting        0.93933         0.59960       0.99929
+
+# Total                  0.93935        0.60650        1.00000
+
+# P(D|F) = [P(F|D)P(D)]/P(F) = [0.69000*0.71000]/0.60650 = 0.80775
+# Given that a new customer fails the test, the probability that this customer will default on their mortgage is ~81%.
+
+```
